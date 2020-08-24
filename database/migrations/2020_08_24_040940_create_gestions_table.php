@@ -13,8 +13,14 @@ class CreateGestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gestions', function (Blueprint $table) {
+        Schema::create('gestiones', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->timestamp('fecha_gestion_inicio');
+            $table->string('dni',14);
+            $table->string('operacion',255);
+            $table->string('manejo',255);
+            $table->string('conclusion',500);
+            $table->string('tipo',2);
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreateGestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gestions');
+        Schema::dropIfExists('gestiones');
     }
 }

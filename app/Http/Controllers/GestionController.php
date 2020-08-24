@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class GestionController extends Controller
 {
@@ -14,72 +15,21 @@ class GestionController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Gestion::all());
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    /*
+    public function index_with_cache()
     {
-        //
-    }
+        $cache_last_key = Redis::get('last_key');
+        $id = Gestion::orderBy('id', 'desc')->first();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if ($cache_last_key != 'gestion'.$id){
+            return response()->json(Gestion::all());
+        }
+        else{
+            return response()->json(Gestion::all());
+        }
+        
+    }*/
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Gestion  $gestion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Gestion $gestion)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Gestion  $gestion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Gestion $gestion)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Gestion  $gestion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Gestion $gestion)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Gestion  $gestion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Gestion $gestion)
-    {
-        //
-    }
 }

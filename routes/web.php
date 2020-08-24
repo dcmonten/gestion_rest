@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use Illuminate\Support\Facades\Cache; 
+use App\Gestion;
+ 
 Route::get('/', function () {
-    return view('welcome');
+    return Cache::remember('gestiones.all', 60 * 60 * 24, function () { 
+        return Gestion::all(); 
+    }); 
 });
