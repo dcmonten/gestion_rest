@@ -10,11 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Support\Facades\Cache; 
-use App\Gestion;
  
 Route::get('/', function () {
-    return Cache::remember('gestiones.all', 60 * 60 * 24, function () { 
-        return Gestion::all(); 
-    }); 
+    
+    return response()->json(['cache'=>'http://127.0.0.1:8000/api/gestion/cache','solo_db'=>'http://127.0.0.1:8000/api/gestion']);
 });

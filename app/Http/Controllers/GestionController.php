@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Gestion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class GestionController extends Controller
 {
@@ -15,21 +16,19 @@ class GestionController extends Controller
      */
     public function index()
     {
-        return response()->json(Gestion::all());
+        return DB::table('gestiones')->get();
     }
-    /*
+    /**
+     * Display a listing of the resource from  redis cache.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
     public function index_with_cache()
     {
-        $cache_last_key = Redis::get('last_key');
-        $id = Gestion::orderBy('id', 'desc')->first();
-
-        if ($cache_last_key != 'gestion'.$id){
-            return response()->json(Gestion::all());
-        }
-        else{
-            return response()->json(Gestion::all());
-        }
-        
-    }*/
+        return Cache::remember('gestiones.todas',60, function () {
+            return DB::table('gestiones')->get();
+        });
+    }
 
 }
