@@ -6,6 +6,7 @@ use App\Gestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
 
 class GestionController extends Controller
 {
@@ -29,6 +30,15 @@ class GestionController extends Controller
         return Cache::remember('gestiones.todas',60, function () {
             return DB::table('gestiones')->get();
         });
+    }
+
+    public function redis_test(Request $request){
+        try{
+            $redis=Redis::connection('default');
+            return response('redis working');
+        }catch(\Predis\Connection\ConnectionException $e){
+            return response('error connection redis');
+        }
     }
 
 }
