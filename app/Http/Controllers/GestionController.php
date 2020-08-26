@@ -27,7 +27,7 @@ class GestionController extends Controller
     
     public function index_with_cache()
     {
-        return Cache::remember('gestiones.todas',60, function () {
+        return Cache::remember('gestiones.todas',60*60, function () {
             return DB::table('gestiones')->get();
         });
     }
