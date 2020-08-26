@@ -35,9 +35,9 @@ class GestionController extends Controller
     public function redis_test(Request $request){
         try{
             $redis=Redis::connection('default');
-            return response('redis working');
+            return response()->json(['redis_up'=>true,"msg"=>'Redis working!'],200);
         }catch(\Predis\Connection\ConnectionException $e){
-            return response('error connection redis');
+            return response()->json(['redis_up'=>false,"msg"=>'Redis not working! :('],500);
         }
     }
 

@@ -75,6 +75,7 @@
                 </div>
 
                 <div class="links">
+                    <a href="{{route('gestiones.cache')}}">Test Cache</a>
                     <a href="{{route('gestiones.cache')}}">Gestiones Cache</a>
                     <a href="{{route('gestiones.db')}}">Gestiones DB</a>
                 </div>
