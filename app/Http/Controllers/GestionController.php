@@ -41,4 +41,9 @@ class GestionController extends Controller
         }
     }
 
+    public function ping(Request $request){
+
+        return response()->json(json_encode('pong'),200);
+    }
+
 }

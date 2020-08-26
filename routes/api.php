@@ -16,3 +16,4 @@ use Illuminate\Http\Request;
 Route::get('gestion','GestionController@index')->name('gestiones.db');
 Route::get('gestion/cache','GestionController@index_with_cache')->name('gestiones.cache');
 Route::get('cache','GestionController@redis_test')->name('cache.test');
+Route::get('ping','GestionController@ping')->name('ping');
