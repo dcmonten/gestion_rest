@@ -67,15 +67,19 @@
         <div class="flex-center position-ref full-height">
 
             <div class="content">
+                
                 <div class="title m-b-md">
+                    Gestiones REST Server
+                </div>
+                <h2>
+                Daniela Montenegro
+                </h2>
+                <h3 class="lead m-b-md">
                     Sistemas Distribuidos - Dra. Cristina Abad
-                </div>
-                <div class="title m-b-md">
-                    Gestiones REST Server - Daniela Montenegro
-                </div>
+                </h3>
 
                 <div class="links">
-                    <a href="{{route('gestiones.cache')}}">Test Cache</a>
+                    <a href="{{route('cache.test')}}">Test Cache</a>
                     <a href="{{route('gestiones.cache')}}">Gestiones Cache</a>
                     <a href="{{route('gestiones.db')}}">Gestiones DB</a>
                 </div>
