@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('gestion','GestionController@index')->name('gestiones');
+Route::get('gestion','GestionController@index')->name('gestiones.db');
 Route::get('gestion/cache','GestionController@index_with_cache')->name('gestiones.cache');

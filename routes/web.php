@@ -12,6 +12,5 @@
 */
  
 Route::get('/', function () {
-    
-    return response()->json(['cache'=>'http://127.0.0.1:8000/api/gestion/cache','solo_db'=>'http://127.0.0.1:8000/api/gestion']);
+    return view('welcome');
 });
